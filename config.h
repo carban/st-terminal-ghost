@@ -9,8 +9,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 5;
+static char *font = "Hack:pixelsize=12:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /* How to align the content in the window when the size of the terminal
  * doesn't perfectly match the size of the window. The values are percentages.
