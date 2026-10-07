@@ -17,6 +17,7 @@
 #include <X11/Xft/Xft.h>
 #include <X11/XKBlib.h>
 #include <X11/Xresource.h>
+#include <X11/Xcursor/Xcursor.h>
 
 char *argv0;
 #include "arg.h"
@@ -1436,6 +1437,11 @@ xinit(int w, int h)
 	                                       ximinstantiate, NULL);
 	}
 
+#if THEMED_CURSOR_PATCH
+	/* cursor shape loaded from the X cursor theme */
+	cursor = XcursorLibraryLoadCursor(xw.dpy, mouseshape);
+	XDefineCursor(xw.dpy, xw.win, cursor);
+#else
 	/* white cursor, black outline */
 	cursor = XCreateFontCursor(xw.dpy, mouseshape);
 	XDefineCursor(xw.dpy, xw.win, cursor);
@@ -1453,6 +1459,7 @@ xinit(int w, int h)
 	}
 
 	XRecolorCursor(xw.dpy, cursor, &xmousefg, &xmousebg);
+#endif
 
 	xw.xembed = XInternAtom(xw.dpy, "_XEMBED", False);
 	xw.wmdeletewin = XInternAtom(xw.dpy, "WM_DELETE_WINDOW", False);
