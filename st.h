@@ -20,7 +20,15 @@
 
 #define TRUECOLOR(r,g,b)	(1 << 24 | (r) << 16 | (g) << 8 | (b))
 #define IS_TRUECOL(x)		(1 << 24 & (x))
-#define HISTSIZE            2000
+/*
+ * Scrollback capacity, in lines, for the ring buffer. Roughly HISTSIZE
+ * - rows lines are available to scroll back into. Lines are allocated
+ * lazily, so a large value only costs memory once filled. Override with
+ * CPPFLAGS=-DHISTSIZE=N without editing this file.
+ */
+#ifndef HISTSIZE
+#define HISTSIZE            10000
+#endif
 
 // This decor color indicates that the fg color should be used. Note that it's
 // not a 24-bit color because the 25-th bit is not set.

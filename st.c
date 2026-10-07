@@ -2037,7 +2037,24 @@ csihandle(void)
 			tclearregion(0, term.c.y, term.c.x, term.c.y);
 			break;
 		case 2: /* all */
-			tclearregion(0, 0, term.col-1, term.row-1);
+			/*
+			 * The scrollback is the ring buffer itself, so
+			 * clearing in place would overwrite lines that
+			 * have not scrolled off yet and lose them for
+			 * good. Scrolling the region out of view instead
+			 * moves it into scrollback, matching xterm.
+			 * Only safe when no scroll region is set, since
+			 * ED is absolute and tscrollup is not.
+			 */
+			if (term.top == 0 && term.bot == term.row - 1)
+				tscrollup(0, term.bot+1);
+			else
+				tclearregion(0, 0, term.col-1, term.row-1);
+			break;
+		case 3: /* scrollback */
+			/* Erase saved lines is a no-op: our scrollback is
+			 * the ring buffer, which cannot be selectively
+			 * dropped without losing the visible screen. */
 			break;
 		default:
 			goto unknown;
