@@ -1,7 +1,12 @@
 # st-terminal
 Beautiful, elegant, super fast and functional terminal emulator
 
+This is a fork repo from [st-terminal](https://github.com/gh0stzk/st-terminal) by gh0stzk, I just add my personal theming and features
+
+---
+
 ![Shot-2025-05-01-102324](https://github.com/user-attachments/assets/d4f322e2-405d-4111-a395-f469cd2ddc9f)
+
 
 My build is based entirely on [St-Graphics](https://github.com/sergei-grechanik/st-graphics). Specifically, on the [graphics-with-patches](https://github.com/sergei-grechanik/st-graphics/tree/graphics-with-patches) branch.
 
