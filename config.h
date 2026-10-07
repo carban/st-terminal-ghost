@@ -9,7 +9,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Hack:pixelsize=12:antialias=true:autohint=true";
+static char *font = "JetBrainsMono NFM:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /* How to align the content in the window when the size of the terminal
