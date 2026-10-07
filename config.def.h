@@ -128,13 +128,6 @@ float alpha = 0.7;
 
 static Geometry geometry = CellGeometry;
 
-/*
- * drag and drop escape characters
- *
- * this will add a '\' before any characters specified in the string.
- */
-char *xdndescchar = " !\"#$&'()*;<>?[\\]^`{|}~";
-
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
